@@ -3,6 +3,7 @@
 // 78 -> третьей цифры нет
 // 3267900 -> 6
 
+
 Console.Write("Введите число = ");
 int number = Convert.ToInt32(Console.ReadLine());
 if (number / 100 == 0)
@@ -11,9 +12,11 @@ if (number / 100 == 0)
 }
 else
 {
-    int x = number / 10000;
-    int y = x / 10 * 10;
-    Console.WriteLine($"Третья цифра числа {number} = {x - y}");
+    int x1 = number / 10000;
+    int y1 = x1 / 10 * 10;
+    int x2 = number % 1000 / 100;
+    Console.WriteLine($"Третья цифра числа c левой стороны {number} = {x1 - y1}, с правой стороны = {x2}");
 }
+
 
 
