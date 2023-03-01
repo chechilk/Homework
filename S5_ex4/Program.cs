@@ -5,9 +5,9 @@
 int size = new Random().Next(5,16);
 int[] array = GetArray(size);
 Console.WriteLine($"Изначальный массив [{String.Join("; ", array)}]");
+
 int newsize = SearchLenght(size);
-int[] NewArray = SearchPairNumbers(array, size, newsize);
-Console.Write($"Новый массив [{String.Join("; ", NewArray)}]");
+Console.Write($"Новый массив [{String.Join("; ", (SearchPairNumbers(array, size, newsize)))}]");
 
 int[] GetArray(int length)
 {
