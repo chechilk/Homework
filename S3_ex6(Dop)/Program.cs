@@ -14,19 +14,21 @@ int[] GetArray(int[] mass, int length)
     {
         for (int i = 0; i < length; i++)
         {
-            int number = new Random().Next(10, 1001);
+            int number = new Random().Next(10,1001);
+            int num = number;
             int summ = 0, multi = 1;
-            while (number > 0)
+
+            while (num > 0)
             {
-                multi = multi * (number % 10);
-                summ = summ + (number % 10);
-                number = number / 10;
+                multi = multi * (num % 10);
+                summ = summ + (num % 10);
+                num = num / 10;
             }
+
             if (multi % summ == 0)
             {
                 mass[i] = number;
                 j++;
-                break;
             }
         }
     }
