@@ -2,12 +2,12 @@
 // [1 2 3 4 5] -> 5 8 3
 // [6 7 3 6] -> 36 21
 
-int size = new Random().Next(5,16);
+int size = new Random().Next(5, 16);
 int[] array = GetArray(size);
 Console.WriteLine($"Изначальный массив [{String.Join("; ", array)}]");
 
-int newsize = SearchLenght(size);
-Console.Write($"Новый массив [{String.Join("; ", (SearchPairNumbers(array, size, newsize)))}]");
+//int newsize = SearchLenght(size);
+Console.Write($"Новый массив [{String.Join("; ", (SearchPairNumbers(array, size)))}]");
 
 int[] GetArray(int length)
 {
@@ -19,20 +19,20 @@ int[] GetArray(int length)
     return mass;
 }
 
-int SearchLenght(int lenght)
-{
-    int newsize = 0;
-    if (lenght % 2 == 1)
-    {
-        newsize = (lenght / 2) + 1;
-    }
-    else newsize = (lenght / 2);
-    return newsize;
-}
+// int SearchLenght(int lenght)
+// {
+//     int newsize = 0;
+//     if (lenght % 2 == 1)
+//     {
+//         newsize = (lenght / 2) + 1;
+//     }
+//     else newsize = (lenght / 2);
+//     return newsize;
+// }
 
-int[] SearchPairNumbers(int[] mass, int length, int newlength)
+int[] SearchPairNumbers(int[] mass, int length)
 {
-    int[] arraymass = new int[newlength];
+    int[] arraymass = new int[length / 2 + length % 2];
     for (int i = 0, j = length - 1; i <= j; i++, j--)
     {
         if (length % 2 == 1)
