@@ -4,35 +4,45 @@
 // [591, 532, 189, 523, 333, 546, 527, 275, 456, 264]
 // 591: (5*9*1)/(5+9+1)=45/15=3
 
+
 int[] array = new int[10];
-Console.WriteLine($"Массив: [ {String.Join(", ", GetArray(array, 10))} ]");
+Console.WriteLine($"Массив из 10ти интересных чисел с уловием");
 
-int[] GetArray(int[] mass, int length)
+for (int i = 0; i < 10; i++)
 {
-    int j = 0;
-    while (j < length)
+    while (true)
     {
-        for (int i = 0; i < length; i++)
+        int number = new Random().Next(10, 1001);
+        if (GetMulti(number) == 0) continue;
+        if (GetMulti(number) % GetSumm(number) == 0)
         {
-            int number = new Random().Next(10,1001);
-            int num = number;
-            int summ = 0, multi = 1;
-
-            while (num > 0)
-            {
-                multi = multi * (num % 10);
-                summ = summ + (num % 10);
-                num = num / 10;
-            }
-
-            if (multi % summ == 0)
-            {
-                mass[i] = number;
-                j++;
-            }
+            array[i] = number;
+            Console.WriteLine($"Число массива: {number} \t произведение {GetMulti(number)} \t сумма {GetSumm(number)} \t разность {GetMulti(number) / GetSumm(number)}");
+            break;
         }
+
     }
-    return mass;
+}
+Console.WriteLine($"Итоговый массив [{String.Join(";", array)}]");
+
+int GetMulti(int number)
+{
+    int multi = 1;
+    while (number > 0)
+    {
+        multi = (number % 10) * multi;
+        number /= 10;
+    }
+    return multi;
 }
 
-
+int GetSumm(int number)
+{
+    int summ = 0;
+    while (number > 0)
+    {
+        summ = (number % 10) + summ;
+        number /= 10;
+    }
+    return summ;
+}
