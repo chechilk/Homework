@@ -8,8 +8,16 @@ double lineOneValueOne = StringRead("Введите первую перемен�
 double lineOneValueTwo = StringRead("Введите вторую переменной первой прямой b1 = ");//b1
 double lineTwoValueOne = StringRead("Введите первую переменную второй прямой k2 = ");//k2
 double lineTwoValueTwo = StringRead("Введите вторую переменную второй прямой b2 = ");//b2
-double ResultX = SearchAbscissa(lineOneValueOne, lineOneValueTwo, lineTwoValueOne, lineTwoValueTwo);
-SearchOrdinate(ResultX, lineOneValueOne, lineOneValueTwo, lineTwoValueOne, lineTwoValueTwo);
+
+double resultX = SearchAbscissa(kOne: lineOneValueOne,
+                                bOne: lineOneValueTwo,
+                                kTwo: lineTwoValueOne,
+                                bTwo: lineTwoValueTwo);
+double resultY = SearchOrdinate(kOne: lineOneValueOne,
+                                bOne: lineOneValueTwo,
+                                kTwo: lineTwoValueOne,
+                                bTwo: lineTwoValueTwo);
+Answer(resultX,resultY);
 
 //Ввод переменных прямых
 double StringRead(string massege)
@@ -26,14 +34,17 @@ double SearchAbscissa(double kOne, double bOne, double kTwo, double bTwo)
     x = (bTwo - bOne) / (kOne - kTwo);
     return x;
 }
-//Вычисление значения y двух прямых.
-void SearchOrdinate(double x, double kOne, double bOne, double kTwo, double bTwo)
+//Вычисление значения y.
+double SearchOrdinate(double kOne, double bOne, double kTwo, double bTwo)
 {
-    double yOne = 0, yTwo = 0;
-    yOne = (kOne * x) + bOne;
-    yTwo = (kTwo * x) + bTwo;
-    if (yOne == yTwo)
+    double y = 0;
+    y = (kOne * (bTwo - bOne) / (kOne - kTwo)) + bOne;
+    return y;
+}
+
+void Answer (double x, double y){
+    if (x == y)
     {
-        Console.Write($"Прямые пересекаются в точках ({ResultX},{yOne})");
-    } else Console.Write($"Прямые не пересекаются");
+        Console.Write($"Две прямые пересекаются в точке ({x},{y})");
+    } else Console.Write("Прямые не пересекаются");
 }
