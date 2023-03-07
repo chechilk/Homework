@@ -12,8 +12,8 @@ int rows = ReadString("Введите количество строк: ");
 int column = ReadString("Введите количество столбцов: ");
 int[,] matrix = InputMatrix(rows, column);
 OutputMatrix(matrix);
-int number = ReadString("Введите искомое число: ");
-SearchNumber(matrix, number);
+SearchNumber(matrix);
+InputResult();
 
 int ReadString(string massege)
 {
@@ -51,16 +51,44 @@ void OutputMatrix(int[,] matrix)
 }
 
 // Поиск числа в матрице 
-void SearchNumber(int[,] matrix, int num)
+void SearchNumber(int[,] matrix)
 {
+    int number = ReadString("Введите искомое число: ");
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            if (matrix[i,j] == num)
+            if (matrix[i, j] == number)
             {
-                Console.WriteLine($"Число {num} находится в {i} строке {j} столбце");
-            } 
-        }   
+                Console.WriteLine($"Число {number} находится в {i} строке {j} столбце");
+            }
+        }
     }
+}
+
+int SearchPosition(int[,] matrix)
+{
+    int n = ReadString("Введите номер строки для поиска: ");
+    int m = ReadString("Введите номер столбца для поиска: ");
+    int k = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            if (n == i && m == j)
+            {
+                k++;
+                Console.Write($"В позиции {n} строка {m} столбец найдено число {matrix[i, j]}. ");
+            }
+        }
+    }
+    return k;
+}
+
+void InputResult(){
+    int k = SearchPosition(matrix);
+    if (k == 0)
+    {
+        Console.Write($"Элемент в массиве не найден");
+    }  else Console.Write($"Элемент в массиве найден");
 }
