@@ -49,13 +49,14 @@ void OutputMatrix(int[,] matrix)
 
 void SearchAverage(int[,] matrix)
 {
-    for (int i = 0; i < rows; i++)
+    for (int i = 0; i < column; i++)
     {
         int summ = 0;
-        for (int j = 0; j < column; j++)
+        for (int j = 0; j < rows; j++)
         {
-            summ = summ + matrix[i, j];
+            summ = summ + matrix[j, i];   
         }
-        Console.WriteLine($"Среднее значение {i} строки = {summ / matrix.GetLength(0)}");
+        Console.Write($"{i} столб: сумма = {summ}, среднее = {summ / matrix.GetLength(1)}");
+        Console.WriteLine();
     }
 }
